@@ -167,6 +167,7 @@ html, body {
 .info-label {
     color: #777;
     font-size: 14px;
+    font-weight: bold;
 }
 
 .info-value {
