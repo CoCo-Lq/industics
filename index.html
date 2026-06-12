@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>博方电气</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="canonical" href="https://in3.industics.com"> -->
+</head>
+<body>
+    <!-- 页面容器 -->
+    <div class="page-container">
+        <!-- 设备信息页面 -->
+        <div id="page-device" class="page active">
+            <div class="page-content">
+                <!-- 背景图 -->
+                <div class="device-banner">
+                    <img src="/img/bg.png" alt="博方电气">
+                </div>
+                <!-- 默认提示：未识别到二维码时显示 -->
+                <div id="scan-tip-section" class="scan-tip-only">
+                    <p class="scan-tip-text">请使用微信扫描设备二维码</p>
+                </div>
+                <!-- 设备详情区域：识别到二维码后显示 -->
+                <div id="device-detail" class="device-detail" style="display:none;">
+                    <div class="device-info-card">
+                        <div class="info-list">
+                            <div class="info-item">
+                                <span class="info-label">设备号</span>
+                                <span class="info-value" id="device-id">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">设备名称</span>
+                                <span class="info-value" id="device-name">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">规格型号</span>
+                                <span class="info-value" id="device-model">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">项目名称</span>
+                                <span class="info-value" id="device-project">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">合同编号</span>
+                                <span class="info-value" id="device-contract">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">产品型号</span>
+                                <span class="info-value" id="device-product">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">额定电压 (V)</span>
+                                <span class="info-value" id="device-voltage">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">额定电流 (A)</span>
+                                <span class="info-value" id="device-current">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">额定频率 (Hz)</span>
+                                <span class="info-value" id="device-frequency">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">执行标准</span>
+                                <span class="info-value" id="device-standard">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">防护等级</span>
+                                <span class="info-value" id="device-protection">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">制造日期</span>
+                                <span class="info-value" id="device-date">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 设备图档页面 -->
+        <div id="page-archive" class="page">
+            <div class="page-content">
+                <!-- Tab切换 -->
+                <div class="tab-bar-blue">
+                    <div class="tab-item-blue active" data-tab="archive">设备图档</div>
+                    <div class="tab-item-blue" data-tab="project">项目图档</div>
+                </div>
+                <!-- 设备图档内容 -->
+                <div id="tab-archive" class="tab-content-blue active">
+                    <div class="archive-count">设备图档个数：<span id="archive-count-num">0</span></div>
+                    <div class="empty-state-blue">
+                        <svg viewBox="0 0 80 80" width="80" height="80">
+                            <rect x="20" y="15" width="40" height="50" rx="3" fill="#e8e8e8"/>
+                            <rect x="28" y="25" width="24" height="3" rx="1" fill="#d0d0d0"/>
+                            <rect x="28" y="32" width="24" height="3" rx="1" fill="#d0d0d0"/>
+                            <rect x="28" y="39" width="16" height="3" rx="1" fill="#d0d0d0"/>
+                            <rect x="15" y="55" width="50" height="10" rx="2" fill="#e0e0e0"/>
+                        </svg>
+                        <p>暂无数据</p>
+                    </div>
+                </div>
+                <!-- 项目图档内容 -->
+                <div id="tab-project" class="tab-content-blue">
+                    <div class="archive-count">项目图档个数：<span id="project-count-num">0</span></div>
+                    <div class="empty-state-blue">
+                        <svg viewBox="0 0 80 80" width="80" height="80">
+                            <rect x="20" y="15" width="40" height="50" rx="3" fill="#e8e8e8"/>
+                            <rect x="28" y="25" width="24" height="3" rx="1" fill="#d0d0d0"/>
+                            <rect x="28" y="32" width="24" height="3" rx="1" fill="#d0d0d0"/>
+                            <rect x="28" y="39" width="16" height="3" rx="1" fill="#d0d0d0"/>
+                            <rect x="15" y="55" width="50" height="10" rx="2" fill="#e0e0e0"/>
+                        </svg>
+                        <p>暂无数据</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 试验报告页面 -->
+        <div id="page-report" class="page">
+            <div class="page-content">
+                <!-- 顶部背景图 -->
+                <div class="device-banner">
+                    <img src="/img/bg.png" alt="博方电气">
+                </div>
+                <!-- 提示滚动条 -->
+                <!-- <div class="report-notice-bar">
+                    <div class="notice-scroll">
+                        <span class="notice-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <circle cx="12" cy="12" r="10" fill="none" stroke="#ff6b35" stroke-width="1.5"/>
+                                <text x="12" y="16" text-anchor="middle" font-size="14" font-weight="bold" fill="#ff6b35">i</text>
+                            </svg>
+                        </span>
+                        <span class="notice-text">建议使用微信扫码来获得文件预览最佳体验</span>
+                    </div>
+                </div> -->
+                <!-- 空状态 -->
+                <div class="empty-state-report">
+                    <img src="/img/no_data.png" alt="暂无数据" width="150" height="120"/>
+                    <p class="empty-text">暂无数据</p>
+                </div>
+                <!-- 返回按钮 -->
+                <button class="btn-return" onclick="switchPage('more')">返回</button>
+            </div>
+        </div>
+
+        <!-- 物料清单页面 -->
+        <div id="page-bom" class="page">
+            <div class="page-content">
+                <!-- 顶部背景图 -->
+                <div class="device-banner">
+                    <img src="/img/bg.png" alt="博方电气">
+                </div>
+                <!-- 物料清单表格 -->
+                <div class="bom-table-wrapper">
+                    <table class="bom-table">
+                        <thead>
+                            <tr>
+                                <th>物料名称</th>
+                                <th>制造商名称</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 返回按钮 -->
+                <button class="btn-return-rect" onclick="switchPage('more')">返回</button>
+            </div>
+        </div>
+
+        <!-- 在线报修页面 -->
+        <div id="page-repair" class="page">
+            <div class="page-content">
+                <!-- <div class="device-banner">
+                    <img src="/img/bg.png" alt="博方电气">
+                </div> -->
+                <!-- Tab切换 -->
+                <div class="repair-tabs">
+                    <div class="repair-tab active" data-tab="online" onclick="switchRepairTab('online')">在线报修</div>
+                    <div class="repair-tab" data-tab="records" onclick="switchRepairTab('records')">报修记录</div>
+                </div>
+                <!-- 在线报修内容 -->
+                <div class="repair-tab-content active" id="repair-tab-online">
+                    <div class="repair-form-wrapper">
+                        <!-- 报修设备信息 -->
+                        <div class="repair-section">
+                            <h3 class="repair-section-title">报修设备信息</h3>
+                            <div class="repair-field">
+                                <span class="repair-label">厂牌编号</span>
+                                <span class="repair-value" id="repair-device-id">SN027963</span>
+                            </div>
+                            <div class="repair-field">
+                                <span class="repair-label">设备名称</span>
+                                <span class="repair-value" id="repair-device-name">铭牌编码</span>
+                            </div>
+                            <div class="repair-field">
+                                <span class="repair-label">设备描述</span>
+                                <span class="repair-value" id="repair-device-desc">铭牌编码</span>
+                            </div>
+                        </div>
+                        <!-- 报修信息 -->
+                        <div class="repair-section">
+                            <h3 class="repair-section-title">报修信息</h3>
+                            <div class="repair-input-group">
+                                <label class="repair-input-label required">报修人</label>
+                                <input type="text" class="repair-input" placeholder="请输入报修人" id="repair-person">
+                            </div>
+                            <div class="repair-input-group">
+                                <label class="repair-input-label required">报修电话</label>
+                                <input type="tel" class="repair-input" placeholder="请输入报修电话" id="repair-phone">
+                            </div>
+                            <div class="repair-input-group">
+                                <label class="repair-input-label required">报修信息</label>
+                                <textarea class="repair-textarea" placeholder="请输入报修信息" id="repair-info" maxlength="50"></textarea>
+                                <span class="repair-char-count"><span id="repair-char-count">0</span>/50</span>
+                            </div>
+                            <div class="repair-input-group">
+                                <label class="repair-input-label">报修单位</label>
+                                <input type="text" class="repair-input" placeholder="请输入报修单位" id="repair-unit">
+                            </div>
+                            <div class="repair-input-group">
+                                <label class="repair-input-label">报修地址</label>
+                                <input type="text" class="repair-input" placeholder="请输入报修地址" id="repair-address">
+                            </div>
+                            <div class="repair-input-group repair-upload-group">
+                                <label class="repair-input-label">报修图片</label>
+                                <div class="repair-upload-btn" id="repair-upload-btn">
+                                    <svg t="1780756466567" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M659.925333 128a74.666667 74.666667 0 0 1 71.338667 52.618667L754.56 256H821.333333c64.8 0 117.333333 52.533333 117.333334 117.333333v426.666667c0 64.8-52.533333 117.333333-117.333334 117.333333H202.666667c-64.8 0-117.333333-52.533333-117.333334-117.333333V373.333333c0-64.8 52.533333-117.333333 117.333334-117.333333h66.773333l23.296-75.381333A74.666667 74.666667 0 0 1 364.074667 128h295.850666zM512 405.333333c-88.362667 0-160 71.637333-160 160 0 88.362667 71.637333 160 160 160 88.362667 0 160-71.637333 160-160 0-88.362667-71.637333-160-160-160z m0 256a96 96 0 1 0 0-192 96 96 0 0 0 0 192z" fill="#333"></path></svg>
+                                </div>
+                                <input type="file" accept="image/*" style="display:none" id="repair-file-input">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 底部按钮 -->
+                    <div class="repair-actions">
+                        <button class="repair-btn-save" id="repair-btn-save">保存</button>
+                        <button class="repair-btn-back" onclick="switchPage('more')">返回</button>
+                    </div>
+                </div>
+                <!-- 报修记录内容 -->
+                <div class="repair-tab-content" id="repair-tab-records">
+                    <div class="repair-record-list" id="repair-record-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 正品查验页面 -->
+        <div id="page-verify" class="page">
+            <div class="page-content">
+                <!-- 顶部背景图 -->
+                <div class="device-banner">
+                    <img src="/img/bg.png" alt="博方电气">
+                </div>
+                <!-- 查验结果卡片 -->
+                <div class="verify-card">
+                    <h3 class="verify-title">查验结果</h3>
+                    <div class="verify-result">
+                        <div class="verify-icon">
+                            <svg viewBox="0 0 100 100" width="100" height="100">
+                                <circle cx="50" cy="50" r="45" fill="#07c160"/>
+                                <path d="M30 52 L45 65 L70 38" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <p class="verify-text">该产品为正品</p>
+                    </div>
+                </div>
+                <!-- 返回按钮 -->
+                <button class="btn-return-rect" onclick="switchPage('more')">返回</button>
+            </div>
+        </div>
+
+        <!-- 更多页面 -->
+        <div id="page-more" class="page">
+            <div class="page-content">
+                <!-- 顶部背景图 -->
+                <div class="device-banner">
+                    <img src="/img/bg.png" alt="博方电气">
+                </div>
+                <!-- 登录提示栏 -->
+                <div class="login-bar">
+                    <span class="login-bar-icon">
+                        <img src="/img/login_user.png" alt="用户" width="16" height="16"/>
+                    </span>
+                    <span class="login-bar-text">   您尚未登录，<a href="javascript:switchPage('login')" class="login-link">请登录</a></span>
+                </div>
+                <!-- 功能宫格 -->
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <svg t="1780752023690" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8684" width="36" height="36">
+                                <path d="M328.6784 364.7744h-52.608a2.0736 2.0736 0 0 0-1.9968 1.9968v52.608a2.0736 2.0736 0 0 0 1.9968 1.9968h52.608a2.0736 2.0736 0 0 0 1.9968-1.9968v-52.608a2.0736 2.0736 0 0 0-1.9968-1.9968z m358.0416 0H393.5488a2.0736 2.0736 0 0 0-1.9968 1.9968v52.608a2.0736 2.0736 0 0 0 1.9968 1.9968h293.1712a2.0736 2.0736 0 0 0 1.9968-1.9968v-52.608a1.9968 1.9968 0 0 0-1.9968-1.9968zM327.5008 495.616h-52.608a2.0736 2.0736 0 0 0-1.9968 1.9968v52.608a2.0736 2.0736 0 0 0 1.9968 1.9968h52.608a2.0736 2.0736 0 0 0 1.9968-1.9968v-52.608a1.9968 1.9968 0 0 0-1.9968-2.0224z m358.4 0H392.8576a2.0736 2.0736 0 0 0-1.9968 1.9968v52.608a2.0736 2.0736 0 0 0 1.9968 1.9968H686.08a2.0736 2.0736 0 0 0 1.9968-1.9968v-52.608a2.0736 2.0736 0 0 0-1.9968-2.0224z m236.288-430.72h-153.0112V2.3552A2.3552 2.3552 0 0 0 766.8224 0h-506.112a2.3552 2.3552 0 0 0-2.3552 2.3552v62.5152h-153.6A2.3552 2.3552 0 0 0 102.4 67.2256v954.3936a2.3552 2.3552 0 0 0 2.3552 2.3552h817.536a2.3552 2.3552 0 0 0 2.3552-2.3552V67.2512a2.3552 2.3552 0 0 0-2.3296-2.3552z m-607.2064-5.888a2.3552 2.3552 0 0 1 2.3552-2.3552h392.8576a2.3552 2.3552 0 0 1 2.3552 2.3552V141.568a2.3552 2.3552 0 0 1-2.3552 2.3552H317.44a2.3552 2.3552 0 0 1-2.3552-2.3552z m552.96 908.3904h-709.12V121.5232H258.56v76.8a2.3552 2.3552 0 0 0 2.3552 2.3552h506.112a2.3552 2.3552 0 0 0 2.3552-2.3552v-76.8h98.8672v845.8496z" fill="#48505F" p-id="8685"></path>
+                            </svg>
+                        </span>
+                        <span class="feature-text">试验报告</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <svg t="1780751463121" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8052" width="36" height="36">
+                                <path d="M841.955556 62.577778H182.044444C113.777778 62.577778 56.888889 119.466667 56.888889 187.733333V853.333333c0 68.266667 56.888889 125.155556 125.155555 125.155556h659.911112c68.266667 0 125.155556-56.888889 125.155555-125.155556V187.733333c0-68.266667-56.888889-125.155556-125.155555-125.155555zM927.288889 853.333333c0 22.755556-11.377778 39.822222-22.755556 56.888889-17.066667 17.066667-34.133333 22.755556-56.888889 22.755556H182.044444c-22.755556 0-39.822222-11.377778-56.888888-22.755556-17.066667-17.066667-22.755556-34.133333-22.755556-56.888889V187.733333c0-22.755556 11.377778-39.822222 22.755556-56.888889 17.066667-17.066667 34.133333-22.755556 56.888888-22.755555h659.911112c22.755556 0 39.822222 11.377778 56.888888 22.755555 17.066667 17.066667 22.755556 34.133333 22.755556 56.888889l5.688889 665.6zM375.466667 273.066667h398.222222c17.066667 0 28.444444 11.377778 28.444444 28.444444s-11.377778 28.444444-28.444444 28.444445h-398.222222c-17.066667 0-28.444444-11.377778-28.444445-28.444445 0-11.377778 11.377778-28.444444 28.444445-28.444444z m0 432.355555h398.222222c17.066667 0 28.444444 11.377778 28.444444 28.444445s-11.377778 28.444444-28.444444 28.444444h-398.222222c-17.066667 0-28.444444-11.377778-28.444445-28.444444s11.377778-28.444444 28.444445-28.444445z m0-216.177778h398.222222c17.066667 0 28.444444 11.377778 28.444444 28.444445s-11.377778 28.444444-28.444444 28.444444h-398.222222c-17.066667 0-28.444444-11.377778-28.444445-28.444444s11.377778-28.444444 28.444445-28.444445zM250.311111 273.066667c17.066667 0 34.133333 17.066667 34.133333 34.133333s-11.377778 28.444444-28.444444 28.444444-28.444444-11.377778-28.444444-28.444444c-5.688889-17.066667 11.377778-34.133333 22.755555-34.133333z m0 432.355555c17.066667 0 28.444444 11.377778 28.444445 28.444445s-11.377778 28.444444-28.444445 28.444444-28.444444-11.377778-28.444444-28.444444 17.066667-28.444444 28.444444-28.444445z m0-216.177778c17.066667 0 34.133333 11.377778 34.133333 28.444445s-11.377778 28.444444-28.444444 28.444444-34.133333-11.377778-34.133333-28.444444 17.066667-28.444444 28.444444-28.444445z" fill="#000000" p-id="8053"></path>
+                            </svg>
+                        </span>
+                        <span class="feature-text">物料清单</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <svg t="1780750101159" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4458" width="36" height="36" fill="none" stroke="#333" stroke-width="80" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M769.413 610.86h-0.019c-2.5 0.011-4.668 0.182-6.74 0.371l-117.418-117.42 84.242-84.246 60.434 0.002c10.446 0 20.266-5.57 25.63-14.538L923.75 214.006a29.779 29.779 0 0 0-4.517-36.439l-72.806-72.798a29.776 29.776 0 0 0-36.432-4.519L628.97 208.45c-8.952 5.367-14.522 15.185-14.536 25.63v60.441l-84.244 84.244-20.91-20.908a210.513 210.513 0 0 0 6.532-51.929c0.024-56.183-21.771-108.933-61.369-148.533-39.576-39.579-92.285-61.37-148.438-61.37h-0.1c-24.157 0-47.861 4.083-70.449 12.133-9.721 3.447-16.866 11.514-19.109 21.564-2.283 10.057 0.715 20.408 8.016 27.682l103.739 103.735-11.16 55.822-55.822 11.164-103.737-103.743c-7.279-7.306-17.629-10.303-27.673-8.024-10.067 2.248-18.134 9.396-21.576 19.112C100.083 258.067 96 281.769 96 305.915c-0.02 56.197 21.779 108.954 61.382 148.552 39.565 39.578 92.278 61.371 148.437 61.371h0.083c4.744 0 9.733-0.215 15.068-0.652L119.767 716.389c-15.13 15.118-23.79 36.085-23.762 57.516-0.028 21.441 8.636 42.408 23.769 57.522l72.792 72.805c15.099 15.107 36.025 23.766 57.419 23.765h0.203c21.403 0 42.328-8.658 57.421-23.762l222.582-222.583 81.018 81.023c-0.187 2.074-0.361 4.243-0.37 6.756 0.043 87.392 71.177 158.526 158.573 158.569 87.391-0.043 158.523-71.177 158.567-158.573-0.041-87.391-71.173-158.524-158.566-158.567z"/>
+                            </svg>
+                        </span>
+                        <span class="feature-text">在线报修</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">
+                            <svg t="1780750785900" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8445" width="36" height="36">
+    <path d="M270.72 309.12h322.304a32 32 0 1 0 0-64H270.72a32 32 0 1 0 0 64z" fill="#000000" p-id="8446"></path>
+    <path d="M1014.592 926.848L845.44 757.76c3.968-4.352 7.552-9.024 11.2-13.632h72c50.56 0 91.776-43.008 91.776-95.808V520.768a32 32 0 0 0-32-32c-48.256 0-87.552-42.88-87.552-95.488s39.296-95.488 87.552-95.488a32 32 0 0 0 32-32V138.24c0-52.8-41.152-95.808-91.776-95.808H91.776C41.216 42.432 0 85.44 0 138.24v127.488a32 32 0 0 0 32 32c48.32 0 87.552 42.88 87.552 95.552S80.32 488.704 32 488.704a32 32 0 0 0-32 32v127.552c0 52.8 41.216 95.808 91.776 95.808h349.696c49.024 61.056 123.392 100.992 207.616 100.992a265.6 265.6 0 0 0 148.096-45.056l172.16 172.16a31.936 31.936 0 0 0 45.248 0 32 32 0 0 0 0-45.312z m-58.24-377.6v99.008c0 17.28-12.672 31.744-27.712 31.744h-32.832a265.6 265.6 0 0 0 20.48-102.208c0-16.192-1.92-31.936-4.736-47.36 13.76 8.576 28.8 15.104 44.8 18.752zM91.776 679.936c-15.04 0-27.712-14.528-27.712-31.744V549.184C132.288 533.76 183.616 469.76 183.616 393.28S132.288 252.8 64 237.312V138.24c0-17.28 12.672-31.744 27.712-31.744H928.64c15.04 0 27.712 14.528 27.712 31.744v99.072c-66.688 15.168-116.864 76.8-119.104 150.976a266.304 266.304 0 0 0-188.16-77.76 267.392 267.392 0 0 0-247.36 166.848l-130.944-0.128a32 32 0 0 0-0.064 64l114.752 0.128c-1.664 12.032-3.712 23.936-3.712 36.416 0 36.224 7.424 70.656 20.48 102.208h-310.4z m354.048-102.208c0-112 91.2-203.2 203.264-203.2s203.2 91.136 203.2 203.2-91.2 203.2-203.2 203.2-203.264-91.2-203.264-203.2z" fill="##000000" p-id="8447"></path>
+  </svg>
+                        </span>
+                        <span class="feature-text">正品查验</span>
+                    </div>
+                </div>
+                <!-- 版权信息 -->
+                <div class="copyright-bar">
+                    <p>Copyright ©2016~2026 <a href="https://www.industics.com/" target="_blank">慧工云</a>. All Rights Reserved.</p>
+                    <p><a href="https://sso.industics.com/privacy/" target="_blank" class="privacy-link">隐私政策</a></p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 登录页面 -->
+        <div id="page-login" class="page">
+            <div class="page-content">
+                <!-- <div class="login-page-header">
+                    <span class="login-page-title">智能厂牌 - 登录</span>
+                    <a href="javascript:switchPage('more')" class="login-page-close">×</a>
+                </div> -->
+                
+                <div class="login-error-bar" id="loginErrorBar" style="display: none;">用户名或密码错误</div>
+                
+                <div class="login-page-body">
+                    <div class="login-company-logo">
+                        <img src="/img/bg.png" alt="博方电气">
+                    </div>
+
+                    <div class="login-form-spacing"></div>
+
+                    <div class="login-form">
+                        <div class="login-form-field">
+                            <div class="login-form-row">
+                                <img src="/img/home.png" alt="  企业" class="login-form-icon" width="18" height="18"/>
+                                <span class="login-form-label">当前企业</span>
+                                <input type="text" class="login-form-input" id="login-company" value="博方电气有限公司" readonly>
+                            </div>
+                        </div>
+                        <div class="login-form-field">
+                            <div class="login-form-row">
+                                <img src="/img/user.png" alt="  用户" class="login-form-icon" width="18" height="18"/>
+                                <span class="login-form-label">用户名</span>
+                                <input type="text" class="login-form-input" id="login-username">
+                            </div>
+                            <span class="login-error-text" id="usernameError"></span>
+                        </div>
+                        <div class="login-form-field">
+                            <div class="login-form-row">
+                                <img src="/img/pwd.png" alt="  密码" class="login-form-icon" width="18" height="18"/>
+                                <span class="login-form-label">密码</span>
+                                <input type="password" class="login-form-input" id="login-password">
+                            </div>
+                            <span class="login-error-text" id="passwordError"></span>
+                        </div>
+                        <button class="login-form-btn" onclick="handleLogin()">登录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" data-page="device">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                <line x1="9" y1="8" x2="15" y2="8"/>
+                <line x1="9" y1="12" x2="15" y2="12"/>
+                <line x1="9" y1="16" x2="13" y2="16"/>
+            </svg>
+            <span>设备信息</span>
+        </div>
+        <div class="nav-item" data-page="archive">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="9" y1="13" x2="15" y2="13"/>
+                <line x1="9" y1="17" x2="15" y2="17"/>
+            </svg>
+            <span>设备图档</span>
+        </div>
+        <div class="nav-item" data-page="company">
+           <svg t="1780743210232" class="icon" viewBox="0 0 1024 1024" width="24" height="24" fill="currentColor">
+        <path
+          d="M807 703.5H651.3c-9.6 0-17.3-7.7-17.3-17.3 0-9.5 7.7-17.3 17.3-17.3H807c9.6 0 17.3 7.7 17.3 17.3-0.1 9.6-7.8 17.3-17.3 17.3z m0-129.7H651.3c-9.6 0-17.3-7.7-17.3-17.3s7.7-17.3 17.3-17.3H807c9.6 0 17.3 7.7 17.3 17.3s-7.8 17.3-17.3 17.3z m0-129.7H651.3c-9.6 0-17.3-7.7-17.3-17.3s7.7-17.3 17.3-17.3H807c9.6 0 17.3 7.7 17.3 17.3s-7.8 17.3-17.3 17.3z m-380.5 34.6H253.6c-9.6 0-17.3-7.7-17.3-17.3 0-9.5 7.7-17.3 17.3-17.3h172.9c9.6 0 17.3 7.7 17.3 17.3 0 9.6-7.7 17.3-17.3 17.3z m0-155.6H253.6c-9.6 0-17.3-7.7-17.3-17.3 0-9.5 7.7-17.3 17.3-17.3h172.9c9.6 0 17.3 7.7 17.3 17.3 0 9.6-7.7 17.3-17.3 17.3zM443.8 911h-34.6V686.2c0-9.5-7.8-17.3-17.3-17.3H288.2c-9.5 0-17.3 7.8-17.3 17.3V911h-34.6V686.2c0-28.6 23.3-51.9 51.9-51.9H392c28.6 0 51.9 23.3 51.9 51.9V911z"
+          p-id="5766"></path>
+        <path
+          d="M910.7 928.3H564.9v-34.6h328.5V366.3c0-28.6-23.3-51.9-51.9-51.9H564.9v-34.6h276.7c47.7 0 86.5 38.8 86.5 86.5V911c-0.1 9.6-7.8 17.3-17.4 17.3z"
+          p-id="5767"></path>
+        <path
+          d="M564.9 928.3H115.3c-9.6 0-17.3-7.7-17.3-17.3V184.6c0-47.7 38.8-86.5 86.5-86.5h311.2c47.7 0 86.5 38.8 86.5 86.5V911c0 9.6-7.8 17.3-17.3 17.3z m-432.3-34.6h415V184.6c0-28.6-23.3-51.9-51.9-51.9H184.5c-28.6 0-51.9 23.3-51.9 51.9v709.1z"
+          p-id="5768"></path>
+      </svg>
+            <span>企业介绍</span>
+        </div>
+        <div class="nav-item" data-page="more">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="8" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+                <circle cx="16" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>更多</span>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="js/qrcode.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

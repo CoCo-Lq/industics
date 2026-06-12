@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "generate-qrcodes": "node generate-qrcodes.js"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

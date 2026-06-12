@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>智能厂牌 - 登录</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background: #f5f5f5;">
+    <div class="login-page">
+        <div class="login-page-header">
+            <span class="login-page-title">智能厂牌 - 登录</span>
+            <a href="index.html" class="login-page-close">×</a>
+        </div>
+        
+        <div class="login-error-bar" id="loginErrorBar">用户名或密码错误</div>
+        
+        <div class="login-page-body">
+            <div class="login-company-logo">
+                <img src="/img/bg.png" alt="博方电气">
+            </div>
+            
+            <div class="login-form">
+                <div class="login-form-field">
+                    <span class="login-form-label">当前企业</span>
+                    <span class="login-form-value">博方电气有限公司</span>
+                </div>
+                <div class="login-form-field">
+                    <span class="login-form-label">用户名</span>
+                    <input type="text" class="login-form-input" id="login-username" oninput="clearError()">
+                    <span class="login-error-text" id="usernameError"></span>
+                </div>
+                <div class="login-form-field">
+                    <span class="login-form-label">密码</span>
+                    <input type="password" class="login-form-input" id="login-password" oninput="clearError()">
+                    <span class="login-error-text" id="passwordError"></span>
+                </div>
+                <button class="login-form-btn" onclick="handleLogin()">登录</button>
+            </div>
+        </div>
+        
+        <div class="login-page-footer">
+            <div class="login-footer-nav">
+                <span>设备信息</span>
+                <span>设备图档</span>
+                <span>企业介绍</span>
+                <span class="active">更多</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin() {
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value.trim();
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+            const errorBar = document.getElementById('loginErrorBar');
+            
+            // 清空之前的错误提示
+            usernameError.textContent = '';
+            passwordError.textContent = '';
+            
+            // 验证用户名
+            if (!username) {
+                usernameError.textContent = '请填写用户名';
+                return;
+            }
+            
+            // 验证密码
+            if (!password) {
+                passwordError.textContent = '请填写密码';
+                return;
+            }
+            
+            // 都填写了，显示错误提示
+            errorBar.style.display = 'block';
+            errorBar.textContent = '用户名或密码错误.';
+        }
+        
+        function clearError() {
+            const errorBar = document.getElementById('loginErrorBar');
+            errorBar.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
