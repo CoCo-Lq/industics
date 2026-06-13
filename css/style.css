@@ -519,8 +519,8 @@ html, body {
 }
 
 .feature-icon svg {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
 }
 
 .feature-text {
@@ -976,11 +976,9 @@ html, body {
 }
 
 .repair-error-text {
-    display: block;
     color: #ff4d4f;
     font-size: 12px;
-    margin-top: 4px;
-    min-height: 16px;
+    margin-top: 8px;
 }
 
 .repair-char-count {
