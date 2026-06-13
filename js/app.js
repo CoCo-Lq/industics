@@ -201,17 +201,35 @@
         const person = document.getElementById('repair-person').value.trim();
         const phone = document.getElementById('repair-phone').value.trim();
         const info = document.getElementById('repair-info').value.trim();
+        const personError = document.getElementById('repair-person-error');
+        const phoneError = document.getElementById('repair-phone-error');
+        const infoError = document.getElementById('repair-info-error');
         
+        // 清空之前的错误提示
+        personError.textContent = '';
+        phoneError.textContent = '';
+        infoError.textContent = '';
+        
+        // 验证必填项
         if (!person) {
-            alert('请输入报修人');
+            personError.textContent = '请填写报修人';
+            if (!phone) {
+                phoneError.textContent = '请填写报修电话';
+            }
+            if (!info) {
+                infoError.textContent = '请填写报修信息';
+            }
             return;
         }
         if (!phone) {
-            alert('请输入报修电话');
+            phoneError.textContent = '请填写报修电话';
+            if (!info) {
+                infoError.textContent = '请填写报修信息';
+            }
             return;
         }
         if (!info) {
-            alert('请输入报修信息');
+            infoError.textContent = '请填写报修信息';
             return;
         }
         

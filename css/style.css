@@ -969,6 +969,14 @@ html, body {
     font-family: 'Microsoft YaHei', sans-serif;
 }
 
+.repair-error-text {
+    display: block;
+    color: #ff4d4f;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 16px;
+}
+
 .repair-char-count {
     position: absolute;
     right: 0;
