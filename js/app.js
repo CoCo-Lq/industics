@@ -378,24 +378,7 @@
 
         if (saveBtn) {
             saveBtn.addEventListener('click', function() {
-                const person = document.getElementById('repair-person').value.trim();
-                const phone = document.getElementById('repair-phone').value.trim();
-                const info = document.getElementById('repair-info').value.trim();
-
-                if (!person) {
-                    alert('请输入报修人');
-                    return;
-                }
-                if (!phone) {
-                    alert('请输入报修电话');
-                    return;
-                }
-                if (!info) {
-                    alert('请输入报修信息');
-                    return;
-                }
-
-                alert('保存成功');
+                saveRepairRecord();
             });
         }
     }
