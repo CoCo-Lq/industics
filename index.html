@@ -197,20 +197,26 @@
                         <div class="repair-section">
                             <h3 class="repair-section-title">报修信息</h3>
                             <div class="repair-input-group">
-                                <label class="repair-input-label required">报修人</label>
-                                <input type="text" class="repair-input" placeholder="请输入报修人" id="repair-person">
-                                <span class="login-error-text" id="repair-person-error"></span>
+                                <div class="repair-input-row">
+                                    <label class="repair-input-label required">报修人</label>
+                                    <input type="text" class="repair-input" placeholder="请输入报修人" id="repair-person">
+                                </div>
+                                <span class="repair-error-text" id="repair-person-error"></span>
                             </div>
                             <div class="repair-input-group">
-                                <label class="repair-input-label required">报修电话</label>
-                                <input type="tel" class="repair-input" placeholder="请输入报修电话" id="repair-phone">
-                                <span class="login-error-text" id="repair-phone-error"></span>
+                                <div class="repair-input-row">
+                                    <label class="repair-input-label required">报修电话</label>
+                                    <input type="tel" class="repair-input" placeholder="请输入报修电话" id="repair-phone">
+                                </div>
+                                <span class="repair-error-text" id="repair-phone-error"></span>
                             </div>
                             <div class="repair-input-group">
-                                <label class="repair-input-label required">报修信息</label>
-                                <textarea class="repair-textarea" placeholder="请输入报修信息" id="repair-info" maxlength="50"></textarea>
-                                <span class="login-error-text" id="repair-info-error"></span>
-                                <span class="repair-char-count"><span id="repair-char-count">0</span>/50</span>
+                                <div class="repair-input-row">
+                                    <label class="repair-input-label required">报修信息</label>
+                                    <textarea class="repair-textarea" placeholder="请输入报修信息" id="repair-info" maxlength="50"></textarea>
+                                    <span class="repair-char-count"><span id="repair-char-count">0</span>/50</span>
+                                </div>
+                                <span class="repair-error-text" id="repair-info-error"></span>
                             </div>
                             <div class="repair-input-group">
                                 <label class="repair-input-label">报修单位</label>

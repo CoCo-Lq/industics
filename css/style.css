@@ -911,10 +911,16 @@ html, body {
 
 .repair-input-group {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     padding: 12px 0;
     border-bottom: 1px solid #f0f0f0;
     position: relative;
+}
+
+.repair-input-row {
+    display: flex;
+    align-items: center;
+    flex: 1;
 }
 
 .repair-input-group:last-child {
