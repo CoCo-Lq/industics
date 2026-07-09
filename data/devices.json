@@ -335,8 +335,72 @@
       "standard": "GB/T 7251.2",
       "protection": "IP40",
       "date": "2026.06"
+    },
+    {
+      "id": "2AH1",
+      "name": "MVnex-12交流金属封闭高压开关柜",
+      "model": "Mvnex",
+      "project": "西安欧亚学院西区 3#、8#箱变、高压环网柜拆除改造项目",
+      "contract": "20250412-58",
+      "factoryCode": "2504058",
+      "factoryDate": "2025.04",
+      "product": "Mvnex",
+      "voltage": "10KV",
+      "current": "630A",
+      "frequency": "50",
+      "standard": "GB/T 7251.2",
+      "protection": "IP40",
+      "date": "2025.04"
+    },
+    {
+      "id": "2AH2",
+      "name": "MVnex-12交流金属封闭高压开关柜",
+      "model": "Mvnex",
+      "project": "西安欧亚学院西区 3#、8#箱变、高压环网柜拆除改造项目",
+      "contract": "20250412-61",
+      "factoryCode": "2504061",
+      "factoryDate": "2025.04",
+      "product": "Mvnex",
+      "voltage": "10KV",
+      "current": "630A",  
+      "frequency": "50",
+      "standard": "GB/T 7251.2",
+      "protection": "IP40",
+      "date": "2025.04"
+    },
+    {
+      "id": "1AH1",
+      "name": "MVnex-12交流金属封闭高压开关柜",
+      "model": "Mvnex",
+      "project": "西安欧亚学院西区 3#、8#箱变、高压环网柜拆除改造项目",
+      "contract": "20250412-60",
+      "factoryCode": "2504060",
+      "factoryDate": "2025.04",
+      "product": "Mvnex",
+      "voltage": "10KV",
+      "current": "630A",  
+      "frequency": "50",
+      "standard": "GB/T 7251.2",
+      "protection": "IP40",
+      "date": "2025.04"
+    },
+    {
+      "id": "1AH2",
+      "name": "MVnex-12交流金属封闭高压开关柜",
+      "model": "Mvnex",
+      "project": "西安欧亚学院西区 3#、8#箱变、高压环网柜拆除改造项目",
+      "contract": "20250412-59",
+      "factoryCode": "2504059",
+      "factoryDate": "2025.04",
+      "product": "Mvnex",
+      "voltage": "10KV",
+      "current": "630A",  
+      "frequency": "50",
+      "standard": "GB/T 7251.2",
+      "protection": "IP40",
+      "date": "2025.04"
     }
   ],
   "generatedAt": "2026-06-08T07:33:17.402Z",
-  "count": 21
+  "count": 25
 }
