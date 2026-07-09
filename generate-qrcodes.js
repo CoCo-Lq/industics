@@ -4,6 +4,7 @@
  * 使用方法：
  *   1. node generate-qrcodes.js http://your-server-ip:3000/index.html
  *   2. QR_BASE_URL=http://your-server-ip:3000/index.html node generate-qrcodes.js
+ *   3. node generate-qrcodes.js http://your-server-ip:3000/index.html --only 2AH1,2AH2,1AH1,1AH2
  * 依赖：qrcode 库 (npm install qrcode)
  */
 const QRCode = require('qrcode');
@@ -18,6 +19,10 @@ const BASE_URL = process.argv[2]
     || process.env.QR_BASE_URL 
     || process.env.BASE_URL
     || 'http://localhost:3000/index.html';
+
+// 获取只生成指定设备的参数
+const onlyArgIndex = process.argv.indexOf('--only');
+const onlyDeviceIds = onlyArgIndex > -1 ? process.argv[onlyArgIndex + 1].split(',').map(id => id.trim()) : null;
 
 /**
  * 检查URL是否为手机可访问地址
@@ -67,12 +72,20 @@ async function generateAllQRCodes() {
     console.log(`基础URL: ${BASE_URL}`);
     console.log(`输出目录: ${OUTPUT_DIR}`);
     console.log(`设备数量: ${data.devices.length}`);
+    if (onlyDeviceIds) {
+        console.log(`仅生成: ${onlyDeviceIds.join(', ')}`);
+    }
     console.log(`====================================\n`);
 
     let successCount = 0;
     let failCount = 0;
 
     for (const device of data.devices) {
+        // 如果指定了只生成的设备ID，跳过不在列表中的设备
+        if (onlyDeviceIds && !onlyDeviceIds.includes(device.id)) {
+            continue;
+        }
+
         const filename = `${device.id}.png`;
         const filepath = path.join(OUTPUT_DIR, filename);
         // 二维码内容：URL?id=设备ID（确保URL稳定不变）
